@@ -1,0 +1,32 @@
+<%= form_with(model: infraction, local: true) do |form| %>
+  <% if infraction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(infraction.errors.count, "error") %> prohibited this infraction from being saved:</h2>
+
+      <ul>
+      <% infraction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date, id: :infraction_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hour %>
+    <%= form.text_field :hour, id: :infraction_hour %>
+  </div>
+
+  <div class="field">
+    <%= form.label :value %>
+    <%= form.number_field :value, id: :infraction_value %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
